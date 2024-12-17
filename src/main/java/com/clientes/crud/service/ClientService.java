@@ -25,5 +25,12 @@ public class ClientService {
     }
 
 
+    @Transactional(readOnly = true)
+    public List<ClientDTO> findAll(){
+        List<Client> result = repository.findAll();
+        return result.stream().map(x-> new ClientDTO(x)).toList();
+    }
+
+
 
 }
